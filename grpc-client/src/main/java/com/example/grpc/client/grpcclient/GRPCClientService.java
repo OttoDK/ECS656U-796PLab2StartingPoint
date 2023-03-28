@@ -55,10 +55,10 @@ public class GRPCClientService {
         .setA01(2)
         .setA10(5)
         .setA11(6)
-        .setB00(3)
-        .setB01(4)
-        .setB10(7)
-        .setB11(8)
+        .setB00(1)
+        .setB01(2)
+        .setB10(5)
+        .setB11(6)
         .build());
 
     String resp = result.getC00() + " " + result.getC01() + "<br>" + result.getC10() + " " + result.getC11() + "\n";
