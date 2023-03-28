@@ -44,4 +44,25 @@ public class GRPCClientService {
 		String resp= A.getC00()+" "+A.getC01()+"<br>"+A.getC10()+" "+A.getC11()+"\n";
 		return resp;
     }
+	public String multiply() {
+    ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 9090)
+        .usePlaintext()
+        .build();
+    MatrixServiceGrpc.MatrixServiceBlockingStub stub = MatrixServiceGrpc.newBlockingStub(channel);
+
+    MatrixReply result = stub.multiplyBlock(MatrixRequest.newBuilder()
+        .setA00(1)
+        .setA01(2)
+        .setA10(5)
+        .setA11(6)
+        .setB00(3)
+        .setB01(4)
+        .setB10(7)
+        .setB11(8)
+        .build());
+
+    String resp = result.getC00() + " " + result.getC01() + "<br>" + result.getC10() + " " + result.getC11() + "\n";
+    return resp;
+}
+
 }
